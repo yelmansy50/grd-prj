@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: mlproject
+Version: 0.0.12
+Author: elmesery77
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: seaborn
+Requires-Dist: matplotlib
+Requires-Dist: scikit-learn
+Requires-Dist: catboost
+Requires-Dist: dill
+Requires-Dist: xgboost
+Requires-Dist: Flask
+Requires-Dist: streamlit
+Dynamic: author
+Dynamic: requires-dist

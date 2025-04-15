@@ -1,0 +1,19 @@
+[ 2025-04-15 17:56:16,404 ] 28 root - INFO - Entered the data ingestion method or component
+[ 2025-04-15 17:56:16,520 ] 31 root - INFO - Read the dataset as dataframe
+[ 2025-04-15 17:56:16,871 ] 37 root - INFO - Train test split initiated
+[ 2025-04-15 17:56:17,277 ] 44 root - INFO - Ingestion of the data is completed
+[ 2025-04-15 17:56:17,415 ] 73 root - INFO - Read train and test data completed
+[ 2025-04-15 17:56:17,415 ] 74 root - INFO - Train DataFrame shape: (98112, 7)
+[ 2025-04-15 17:56:17,415 ] 75 root - INFO - Test DataFrame shape: (24528, 7)
+[ 2025-04-15 17:56:17,415 ] 77 root - INFO - Obtaining preprocessing object
+[ 2025-04-15 17:56:17,415 ] 51 root - INFO - Categorical columns: ['Source_Type', 'Destination_Type', 'Protocol']
+[ 2025-04-15 17:56:17,441 ] 52 root - INFO - Numerical columns: ['Time', 'Length', 'No.']
+[ 2025-04-15 17:56:17,457 ] 103 root - INFO - Applying preprocessing object on training dataframe and testing dataframe.
+[ 2025-04-15 17:56:17,669 ] 116 root - INFO - Input features type: <class 'scipy.sparse._csr.csr_matrix'>
+[ 2025-04-15 17:56:17,669 ] 117 root - INFO - Target type: <class 'numpy.ndarray'>
+[ 2025-04-15 17:56:17,679 ] 123 root - INFO - Converted sparse matrix to dense array
+[ 2025-04-15 17:56:17,679 ] 126 root - INFO - Final train features shape: (98112, 29)
+[ 2025-04-15 17:56:17,679 ] 127 root - INFO - Final train target shape: (98112, 1)
+[ 2025-04-15 17:56:17,689 ] 139 root - INFO - Combined train array shape: (98112, 30)
+[ 2025-04-15 17:56:17,689 ] 140 root - INFO - Combined test array shape: (24528, 30)
+[ 2025-04-15 17:56:17,689 ] 142 root - INFO - Saved preprocessing object.
