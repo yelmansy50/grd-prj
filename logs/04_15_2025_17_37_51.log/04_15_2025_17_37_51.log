@@ -1,0 +1,16 @@
+[ 2025-04-15 17:37:53,387 ] 28 root - INFO - Entered the data ingestion method or component
+[ 2025-04-15 17:37:53,503 ] 31 root - INFO - Read the dataset as dataframe
+[ 2025-04-15 17:37:53,851 ] 37 root - INFO - Train test split initiated
+[ 2025-04-15 17:37:54,216 ] 44 root - INFO - Ingestion of the data is completed
+[ 2025-04-15 17:37:54,345 ] 73 root - INFO - Read train and test data completed
+[ 2025-04-15 17:37:54,345 ] 74 root - INFO - Train DataFrame shape: (98112, 7)
+[ 2025-04-15 17:37:54,345 ] 75 root - INFO - Test DataFrame shape: (24528, 7)
+[ 2025-04-15 17:37:54,345 ] 77 root - INFO - Obtaining preprocessing object
+[ 2025-04-15 17:37:54,345 ] 51 root - INFO - Categorical columns: ['Source_Type', 'Destination_Type', 'Protocol']
+[ 2025-04-15 17:37:54,361 ] 52 root - INFO - Numerical columns: ['Time', 'Length', 'No.']
+[ 2025-04-15 17:37:54,381 ] 103 root - INFO - Applying preprocessing object on training dataframe and testing dataframe.
+[ 2025-04-15 17:37:54,560 ] 112 root - INFO - Shape of transformed training features: (98112, 29)
+[ 2025-04-15 17:37:54,560 ] 113 root - INFO - Shape of transformed testing features: (24528, 29)
+[ 2025-04-15 17:37:54,560 ] 114 root - INFO - Shape of training target: (98112,)
+[ 2025-04-15 17:37:54,560 ] 115 root - INFO - Shape of testing target: (24528,)
+[ 2025-04-15 17:37:54,560 ] 143 root - ERROR - Error in data transformation
