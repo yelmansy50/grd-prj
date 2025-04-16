@@ -2,35 +2,72 @@ import streamlit as st
 import pandas as pd
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
+# Set page config
+st.set_page_config(page_title="NetKeeper", layout="centered")
+
+# Center the image using Streamlit's `st.image` with a centered layout
+col1, col2, col3 = st.columns([1, 2, 1])  # Create three columns
+with col2:  # Place the image in the center column
+    st.image("D:/net.jpg", width=800)
+
 # Set the title of the app
 st.title("NetKeeper")
 st.subheader("Predict the Protocol Type Based on Network Traffic Data")
+
+# Mapping predictions to labels, tips, and video links
+attack_info = {
+    0.0: ("🔴 CDP Attack", [
+        "Disable unused CDP services on all network devices.",
+        "Segment your network and limit CDP to trusted interfaces only.",
+        "Regularly audit Layer 2 configurations.",
+        "Use secure management protocols like SSH instead of CDP-based discovery."
+    ], "https://drive.google.com/file/d/VIDEO_ID_1/preview"),
+
+    2.0: ("🔴 OSPF Attack", [
+        "Use MD5 or SHA authentication for OSPF messages.",
+        "Implement passive interfaces where routing updates are not needed.",
+        "Monitor routing tables for sudden or suspicious changes.",
+        "Use route filtering and summarization to control routing updates."
+    ], "https://drive.google.com/file/d/VIDEO_ID_2/preview"),
+
+    1.0: ("🔴 ICMP Attack", [
+        "Restrict ICMP traffic using firewall rules.",
+        "Limit ICMP rate using router access control lists (ACLs).",
+        "Monitor for ICMP floods or ping sweeps using IDS.",
+        "Disable ICMP redirect messages on gateways."
+    ], "https://drive.google.com/file/d/VIDEO_ID_3/preview"),
+
+    3.0: ("🔴 DHCP Attack", [
+        "Enable DHCP snooping on switches to filter rogue servers.",
+        "Use port security to limit MAC addresses per port.",
+        "Configure trusted ports only for legitimate DHCP servers.",
+        "Monitor logs for multiple DHCP OFFER messages."
+    ], "https://drive.google.com/file/d/VIDEO_ID_4/preview"),
+
+    4.0: ("🟢 Safe", [], ""),
+
+    5.0: ("🔴 MAC Flood Attack", [
+        "Enable port security to restrict dynamic MAC addresses.",
+        "Limit the number of MAC addresses per interface.",
+        "Use dynamic ARP inspection to validate MAC-IP mappings.",
+        "Deploy IDS/IPS to detect abnormal MAC behavior."
+    ], "https://drive.google.com/file/d/VIDEO_ID_6/preview")
+}
 
 # Create the form using Streamlit widgets
 with st.form("prediction_form"):
     st.write("Please fill out the details below:")
 
-    # No.
     no = st.number_input("Packet Number (No.)", min_value=1, step=1)
-
-    # Time
     time = st.number_input("Time (in seconds)", min_value=0.0, step=0.01)
-
-    # Protocol
     protocol = st.selectbox(
         "Protocol",
-        ["Select Protocol", "CDP", "ICMP", "STP", "OSPF", "DHCP", "IPv4", "TCP"],
+        ["Select Protocol", "CDP", "ICMP", "STP", "OSPF", "DHCP", "IPv4", "TCP"]
     )
-
-    # Length
     length = st.number_input("Packet Length (in bytes)", min_value=1, step=1)
-
-    # Source Type
     source_type = st.selectbox(
         "Source Type", ["Select Source Type", "MAC_Address", "IP_Address"]
     )
-
-    # Destination Type
     destination_type = st.selectbox(
         "Destination Type",
         [
@@ -40,15 +77,13 @@ with st.form("prediction_form"):
             "Multicast",
             "Broadcast",
             "Spanning_Tree_Protocol",
-        ],
+        ]
     )
 
-    # Submit button
     submitted = st.form_submit_button("Predict Protocol Type")
 
 # Handle form submission
 if submitted:
-    # Validate inputs
     if (
         protocol == "Select Protocol"
         or source_type == "Select Source Type"
@@ -56,7 +91,6 @@ if submitted:
     ):
         st.error("Please fill out all the fields correctly.")
     else:
-        # Normalize input categories to match the preprocessor's expectations
         data = CustomData(
             no=no,
             time=time,
@@ -66,17 +100,23 @@ if submitted:
             destination_type=destination_type,
         )
 
-        # Convert data to DataFrame
         pred_df = data.get_data_as_data_frame()
-        st.write("Input DataFrame:", pred_df)
+        #st.write("Input DataFrame:", pred_df)
 
-        # Prediction pipeline
         predict_pipeline = PredictPipeline()
         st.write("Starting Prediction...")
         try:
-            # Perform prediction
             results = predict_pipeline.predict(pred_df)
-            st.success(f"The predicted Protocol Type is: {results[0]}")
+            pred_class = float(results[0])
+
+            if pred_class in attack_info:
+                label, tips, video_url = attack_info[pred_class]
+                st.success(f"Prediction: {label}")
+                for i, tip in enumerate(tips, start=1):
+                    st.info(f"💡 Tip {i}: {tip}")
+                if video_url:
+                    st.video(video_url)
+            else:
+                st.warning("⚠️ Unknown prediction result.")
         except Exception as e:
-            # Handle errors during prediction
             st.error(f"An error occurred during prediction: {e}")
