@@ -8,3 +8,4 @@ dill
 xgboost
 Flask
 streamlit
+gTTS
