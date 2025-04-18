@@ -12,5 +12,6 @@ Requires-Dist: dill
 Requires-Dist: xgboost
 Requires-Dist: Flask
 Requires-Dist: streamlit
+Requires-Dist: gTTS
 Dynamic: author
 Dynamic: requires-dist
