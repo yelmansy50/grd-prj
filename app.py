@@ -37,7 +37,7 @@ attack_info = {
         "Limit ICMP rate using router access control lists (ACLs).",
         "Monitor for ICMP floods or ping sweeps using IDS.",
         "Disable ICMP redirect messages on gateways."
-    ], "notebook\icmp.jpg"),
+    ], "notebook/icmp.jpg"),
 
     3.0: ("🔴 DHCP Attack", [
         "Enable DHCP snooping on switches to filter rogue servers.",
