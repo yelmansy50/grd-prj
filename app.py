@@ -10,7 +10,7 @@ st.set_page_config(page_title="NetKeeper", layout="centered")
 # Center the image using Streamlit's `st.image` with a centered layout
 col1, col2, col3 = st.columns([1, 2, 1])  # Create three columns
 with col2:  # Place the image in the center column
-    st.image("D:/net.jpg", width=800)
+    st.image(r"D:\ACADEMY\notebook\net.jpg", width=800)
 
 # Set the title of the app
 st.title("NetKeeper")
@@ -37,7 +37,7 @@ attack_info = {
         "Limit ICMP rate using router access control lists (ACLs).",
         "Monitor for ICMP floods or ping sweeps using IDS.",
         "Disable ICMP redirect messages on gateways."
-    ], "D:/icmp.jpg"),
+    ], "D:\ACADEMY\notebook\icmp.jpg"),
 
     3.0: ("🔴 DHCP Attack", [
         "Enable DHCP snooping on switches to filter rogue servers.",
@@ -46,14 +46,14 @@ attack_info = {
         "Monitor logs for multiple DHCP OFFER messages."
     ], None),
 
-    4.0: ("🟢 Safe", [], "D:/safe.jpg"),
+    4.0: ("🟢 Safe", [], "D:\ACADEMY\notebook\safe.jpg"),
 
     5.0: ("🔴 MAC Flood Attack", [
         "Enable port security to restrict dynamic MAC addresses.",
         "Limit the number of MAC addresses per interface.",
         "Use dynamic ARP inspection to validate MAC-IP mappings.",
         "Deploy IDS/IPS to detect abnormal MAC behavior."
-    ], "D:/macflood.jpg")
+    ], "D:\ACADEMY\notebook\macflood.jpg")
 }
 
 # Create the form using Streamlit widgets
