@@ -37,7 +37,7 @@ attack_info = {
         "Limit ICMP rate using router access control lists (ACLs).",
         "Monitor for ICMP floods or ping sweeps using IDS.",
         "Disable ICMP redirect messages on gateways."
-    ], "D:\ACADEMY\notebook\icmp.jpg"),
+    ], "notebook\icmp.jpg"),
 
     3.0: ("🔴 DHCP Attack", [
         "Enable DHCP snooping on switches to filter rogue servers.",
@@ -46,14 +46,14 @@ attack_info = {
         "Monitor logs for multiple DHCP OFFER messages."
     ], None),
 
-    4.0: ("🟢 Safe", [], "D:\ACADEMY\notebook\safe.jpg"),
+    4.0: ("🟢 Safe", [], "notebook\safe.jpg"),
 
     5.0: ("🔴 MAC Flood Attack", [
         "Enable port security to restrict dynamic MAC addresses.",
         "Limit the number of MAC addresses per interface.",
         "Use dynamic ARP inspection to validate MAC-IP mappings.",
         "Deploy IDS/IPS to detect abnormal MAC behavior."
-    ], "D:\ACADEMY\notebook\macflood.jpg")
+    ], "notebook\macflood.jpg")
 }
 
 # Create the form using Streamlit widgets
