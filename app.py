@@ -10,7 +10,7 @@ st.set_page_config(page_title="NetKeeper", layout="centered")
 # Center the image using Streamlit's `st.image` with a centered layout
 col1, col2, col3 = st.columns([1, 2, 1])  # Create three columns
 with col2:  # Place the image in the center column
-    st.image(r"D:\ACADEMY\notebook\net.jpg", width=800)
+    st.image(r"notebook\knet.jpg", width=800)
 
 # Set the title of the app
 st.title("NetKeeper")
