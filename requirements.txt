@@ -9,4 +9,6 @@ xgboost
 Flask
 streamlit
  gTTS
+ requests
+ OpenAI
 -e .

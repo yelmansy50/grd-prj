@@ -13,5 +13,7 @@ Requires-Dist: xgboost
 Requires-Dist: Flask
 Requires-Dist: streamlit
 Requires-Dist: gTTS
+Requires-Dist: requests
+Requires-Dist: OpenAI
 Dynamic: author
 Dynamic: requires-dist
