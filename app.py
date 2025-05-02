@@ -2,30 +2,7 @@ import os
 from gtts import gTTS
 import streamlit as st
 import pandas as pd
-import requests  
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
-
-# Hugging Face API configuration
-HUGGING_FACE_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
-HUGGING_FACE_API_TOKEN = os.getenv("HUGGING_FACE_API_TOKEN")
-
-def get_chatbot_response(message):
-    """Send a message to the Hugging Face chatbot and return the response."""
-    headers = {"Authorization": f"Bearer {HUGGING_FACE_API_TOKEN}"}
-    payload = {"inputs": message}
-    response = requests.post(HUGGING_FACE_API_URL, headers=headers, json=payload)
-    if response.status_code == 200:
-        response_data = response.json()
-        # Check if the response is a list
-        if isinstance(response_data, list) and len(response_data) > 0:
-            return response_data[0].get("generated_text", "No response from chatbot.")
-        # If it's a dictionary
-        elif isinstance(response_data, dict):
-            return response_data.get("generated_text", "No response from chatbot.")
-        else:
-            return "Unexpected response format."
-    else:
-        return f"Error: {response.status_code}, {response.text}"
 
 # Set page config
 st.set_page_config(page_title="NetKeeper", layout="centered")
@@ -249,17 +226,6 @@ if submitted:
                 # Display tips
                 for i, tip in enumerate(tips, start=1):
                     st.markdown(f'<div class="tip">💡 Tip {i}: {tip}</div>', unsafe_allow_html=True)
-
-                # Send prediction result to Hugging Face chatbot
-                chatbot_message = (
-                      f"You are a cybersecurity expert specializing in network attacks. "
-                      f"The prediction is a {label} attack on the network. "
-                      f"Please provide detailed advice and best practices to mitigate and protect against this type of attack."
-                )
-                chatbot_response = get_chatbot_response(chatbot_message)
-
-                # Display chatbot response
-                st.markdown(f'<div class="tip">🤖 Chatbot Advice: {chatbot_response}</div>', unsafe_allow_html=True)
             else:
                 st.warning("⚠️ Unknown prediction result.")
         except Exception as e:
