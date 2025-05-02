@@ -9,10 +9,5 @@ xgboost
 Flask
 streamlit
  gTTS
- requests
- OpenAI
- transformers
- AutoModelForCausalLM
- AutoTokenizer 
- torch
+ 
 -e .
