@@ -15,5 +15,9 @@ Requires-Dist: streamlit
 Requires-Dist: gTTS
 Requires-Dist: requests
 Requires-Dist: OpenAI
+Requires-Dist: transformers
+Requires-Dist: AutoModelForCausalLM
+Requires-Dist: AutoTokenizer
+Requires-Dist: torch
 Dynamic: author
 Dynamic: requires-dist
